@@ -11,6 +11,9 @@ public class App {
         items.append(3);
         items.append(4);
         items.append(5);
+        items.append(6);
+        items.append(7);
+        items.append(8);
 
         System.out.println(items.toString());
     }
