@@ -33,10 +33,17 @@ public class Array<T> {
 
     @Override
     public String toString() {
-        StringBuilder string = new StringBuilder();
-
-        for (int i = 0; i < this.getLength(); i++) 
-            string.append(this.items[i]);
+        StringBuilder string = new StringBuilder("[");
+        int length = this.getLength();
+        
+        for (int i = 0; i < length; i++) {
+            if (i == length - 1) 
+                string.append(this.items[i]);
+            else 
+                string.append(this.items[i] + ", ");
+        }
+        
+        string.append("]");
 
         return string.toString();
     }
