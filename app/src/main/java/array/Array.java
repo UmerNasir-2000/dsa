@@ -4,14 +4,13 @@ public class Array<T> {
     private Integer capacity;
     private int length;
     private T[] items;
-
-    
+  
     public Array(Integer capacity) {
         this.setCapacity(capacity);
         this.items = (T[]) new Object[this.capacity];
     }
 
-    private int getLength() {
+    public int getLength() {
         return length;
     }
 
@@ -35,11 +34,22 @@ public class Array<T> {
     }
 
     public void append(T item) {
-        if (this.getLength() >= this.capacity) 
+        int length = this.getLength();
+
+        if (length >= this.capacity) 
             this.resize();
 
-        this.items[this.getLength()] = item;
-        this.setLength(this.getLength() + 1);
+        this.items[this.length++]= item;
+    }
+
+    public T pop() {
+        if (this.length <= 0) throw new IllegalStateException("Array is empty");
+        int length = this.getLength();
+
+        T item = this.items[length - 1];
+        this.setLength(length - 1);
+
+        return item;
     }
 
     @Override
