@@ -10,6 +10,32 @@ public class Array<T> {
         this.items = (T[]) new Object[this.capacity];
     }
 
+    public void removeAt(int index) {
+        this.validateIndex(index);
+
+        for (int i = index; i < this.getLength() - 1; i++)
+            items[i] = items[i + 1];
+
+        this.setLength(this.getLength() - 1);
+    }
+
+    public void insertAt(int index, T value) {
+        this.validateIndex(index);
+
+        if (this.getLength() >= this.capacity) resize();
+
+        for (int i = this.getLength() - 1; i >= index; i--)
+            items[i+1] = items[i];
+
+        this.items[index] = value;
+
+        this.setLength(this.getLength() + 1);
+    }
+
+    private void validateIndex(int index) {
+        if (index < 0 || index >= this.getLength()) throw new IllegalArgumentException("Invalid Index");
+    }
+
     public int getLength() {
         return length;
     }

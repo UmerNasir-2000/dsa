@@ -12,9 +12,10 @@ public class App {
         items.append(4);
         items.append(5);
         items.append(6);
-        items.append(7);
 
-        System.out.println(items.pop());
+        items.removeAt(4);
+
+        // System.out.println(items.pop());
         System.out.println(items.toString());
     }
 }
