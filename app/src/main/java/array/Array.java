@@ -10,7 +10,7 @@ public class Array<T> {
         this.items = (T[]) new Object[this.capacity];
     }
 
-    public int findMaxConsecutiveOnes(int[] nums) {
+    public static int findMaxConsecutiveOnes(int[] nums) {
         int max = 0;
         int count = 0;
         
@@ -19,16 +19,12 @@ public class Array<T> {
                 count++;
             
             else {
-                if (max < count) 
-                    max = count;
+                max = Math.max(max, count);
                 count = 0;
             }
         }
-        
-        if(max < count)
-            max = count;
-            
-        return max;
+ 
+        return Math.max(max, count);
     }
 
     public void removeAt(int index) {
